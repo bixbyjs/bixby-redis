@@ -5,7 +5,7 @@ var pkg = require('..');
 describe('bixby-redis', function() {
   
   it('should export object', function() {
-    expect(pkg).to.be.an('object');
+    expect(pkg).to.be.an('function');
   });
   
 });
