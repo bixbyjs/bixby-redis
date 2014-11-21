@@ -1,11 +1,11 @@
 /* global describe, it, expect */
 
-var pkg = require('..');
+var redis = require('..');
 
 describe('bixby-redis', function() {
   
-  it('should export object', function() {
-    expect(pkg).to.be.an('function');
+  it('should export function', function() {
+    expect(redis).to.be.an('function');
   });
   
 });
