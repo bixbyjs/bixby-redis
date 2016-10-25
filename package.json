@@ -1,7 +1,7 @@
 {
   "name": "bixby-redis",
   "version": "0.0.0",
-  "description": "TODO: No description specified",
+  "description": "Redis components for Bixby.js.",
   "keywords": [
     "redis"
   ],
@@ -24,7 +24,7 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib",
+  "main": "./index.js",
   "dependencies": {
     "redis": "^2.4.2"
   },
