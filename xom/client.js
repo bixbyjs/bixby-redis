@@ -49,8 +49,11 @@ exports = module.exports = function(settings, logger) {
     throw err;
   });
  
-  
-  return client;
+ 
+  return Promise.resolve(client)
+    .then(function(client) {
+      return client;
+    })
 }
 
 
