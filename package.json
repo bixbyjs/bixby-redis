@@ -29,12 +29,12 @@
     "redis": "^2.4.2"
   },
   "devDependencies": {
-    "make-node": "0.3.x",
-    "mocha": "2.x.x",
-    "chai": "3.x.x",
-    "sinon-chai": "^2.8.0",
-    "proxyquire": "^1.7.0",
-    "sinon": "^1.17.0"
+    "make-node": "^0.3.0",
+    "proxyquire": "^2.1.0",
+    "mocha": "^6.1.4",
+    "chai": "^4.2.0",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
   },
   "engines": {
     "node": "*"
