@@ -17,7 +17,10 @@ exports = module.exports = function(redis) {
 };
 
 exports['@singleton'] = true;
-exports['@implements'] = 'http://i.bixbyjs.org/IService';
+exports['@implements'] = [
+  'http://i.bixbyjs.org/IService',
+  'http://i.bixbyjs.org/http/ISessionStore'
+];
 exports['@name'] = 'sess-redis';
 exports['@require'] = [
   'http://i.bixbyjs.org/redis'
