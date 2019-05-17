@@ -9,7 +9,7 @@ exports = module.exports = function(redis) {
     var client = redis.createConnection(options);
     
     var store = new RedisStore({ client: client });
-    store.once('connect', connectListener);
+    if (connectListener) { store.once('connect', connectListener); }
     return store;
   }
   
