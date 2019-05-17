@@ -10,7 +10,7 @@ exports = module.exports = function(keyring) {
     
     // TODO: Handle initial errors somehow...
     
-    keyring.get(client.address.split(':')[0], function(err, cred) {
+    keyring.get(options.cname, function(err, cred) {
       // TODO: Error handling
       client.auth(cred.password);
     });
