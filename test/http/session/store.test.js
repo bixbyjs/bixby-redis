@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var factory = require('../../../app/http/session/store');
 
 
-describe('service', function() {
+describe('http/session/store', function() {
   
   it('should export factory function', function() {
     expect(factory).to.be.a('function');
