@@ -6,32 +6,13 @@ exports = module.exports = function(keyring) {
   
   api.createConnection = function(options, connectListener) {
     var client = redis.createClient(options.port, options.cname);
+    if (connectListener) { client.once('connect', connectListener); }
     
-    client.on('ready', function() {
-      console.log('READY');
-    });
+    // TODO: Handle initial errors somehow...
     
-    // TODO: setup connect listener from arguments
-    client.on('connect', function() {
-      console.log('CONNECT');
-    });
-    
-    client.on('reconnecting', function() {
-      console.log('RECONNECTING');
-    });
-    
-    client.on('error', function(err) {
-      console.log('ERROR!');
-      console.log(err)
-    });
-    
-    process.nextTick(function() {
-      keyring.get(client.address.split(':')[0], function(err, cred) {
-        console.log(err);
-        console.log(cred)
-        
-        client.auth(cred.password);
-      });
+    keyring.get(client.address.split(':')[0], function(err, cred) {
+      // TODO: Error handling
+      client.auth(cred.password);
     });
     
     return client;
