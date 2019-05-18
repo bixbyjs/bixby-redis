@@ -11,7 +11,7 @@ exports = module.exports = function(redis) {
     var store = new RedisStore({ client: client });
     if (connectListener) { store.once('connect', connectListener); }
     return store;
-  }
+  };
   
   return api;
 };

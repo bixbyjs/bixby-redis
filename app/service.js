@@ -16,7 +16,7 @@ exports = module.exports = function(keyring) {
     });
     
     return client;
-  }
+  };
   
   return api;
 };
