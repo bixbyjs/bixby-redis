@@ -48,6 +48,7 @@ describe('http/session/store', function() {
       
       it('should construct store and add listener', function(done) {
         var store = api.createConnection({ cname: 'redis.example.com', port: 6379 }, function() {
+          expect(this).to.be.an.instanceof(RedisStore);
           done();
         });
         

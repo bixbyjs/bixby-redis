@@ -61,6 +61,7 @@ describe('service', function() {
       
       it('should construct client, add listener and auth', function(done) {
         var client = api.createConnection({ cname: 'redis.example.com', port: 6379 }, function() {
+          expect(this).to.be.an.instanceof(redis.RedisClient);
           expect(client.auth).to.have.been.calledOnceWithExactly('keyboard cat');
           done();
         });
