@@ -5,12 +5,12 @@ exports = module.exports = function(keyring) {
   var api = {};
   
   api.createConnection = function(options, connectListener) {
-    var client = redis.createClient(options.port, options.cname);
+    var client = redis.createClient(options.port, options.address || options.name);
     if (connectListener) { client.once('connect', connectListener); }
     
     // TODO: Handle initial errors somehow...
     
-    keyring.get(options.cname, function(err, cred) {
+    keyring.get(options.name, function(err, cred) {
       // TODO: Error handling
       client.auth(cred.password);
     });

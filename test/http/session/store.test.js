@@ -38,21 +38,21 @@ describe('http/session/store', function() {
       
       
       it('should construct store', function() {
-        var store = api.createConnection({ cname: 'redis.example.com', port: 6379 });
+        var store = api.createConnection({ name: 'redis.example.com', port: 6379 });
         
-        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ cname: 'redis.example.com', port: 6379 });
+        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ name: 'redis.example.com', port: 6379 });
         expect(ReidsStoreStub).to.have.been.calledOnce.and.calledWithNew;
         expect(ReidsStoreStub.getCall(0).args[0].client).to.be.an.instanceof(redis.RedisClient);
         expect(store).to.be.an.instanceof(RedisStore);
       }); // should construct store
       
       it('should construct store and add listener', function(done) {
-        var store = api.createConnection({ cname: 'redis.example.com', port: 6379 }, function() {
+        var store = api.createConnection({ name: 'redis.example.com', port: 6379 }, function() {
           expect(this).to.be.an.instanceof(RedisStore);
           done();
         });
         
-        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ cname: 'redis.example.com', port: 6379 });
+        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ name: 'redis.example.com', port: 6379 });
         expect(ReidsStoreStub).to.have.been.calledOnce.and.calledWithNew;
         expect(ReidsStoreStub.getCall(0).args[0].client).to.be.an.instanceof(redis.RedisClient);
         expect(store).to.be.an.instanceof(RedisStore);
