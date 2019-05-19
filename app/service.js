@@ -27,6 +27,8 @@ exports['@implements'] = [
   'http://i.bixbyjs.org/IService'
 ];
 exports['@name'] = 'redis';
+exports['@port'] = 6379;
+exports['@protocol'] = 'tcp';
 exports['@require'] = [
   'http://i.bixbyjs.org/security/CredentialsStore'
 ];
