@@ -14,7 +14,7 @@ describe('http/session/store', function() {
   
   it('should be annotated', function() {
     expect(factory['@singleton']).to.equal(true);
-    expect(factory['@implements']).to.deep.equal([ 'http://i.bixbyjs.org/IService', 'http://i.bixbyjs.org/http/ISessionStore' ]);
+    expect(factory['@implements']).to.deep.equal([ 'http://i.bixbyjs.org/Service', 'http://i.bixbyjs.org/http/SessionStore' ]);
     expect(factory['@name']).to.equal('sess-redis');
     expect(factory['@port']).to.equal(6379);
     expect(factory['@protocol']).to.equal('tcp');

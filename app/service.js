@@ -22,13 +22,10 @@ exports = module.exports = function(keyring) {
 };
 
 exports['@singleton'] = true;
-exports['@implements'] = [
-  'http://i.bixbyjs.org/redis',
-  'http://i.bixbyjs.org/IService'
-];
-exports['@name'] = 'redis';
-exports['@port'] = 6379;
-exports['@protocol'] = 'tcp';
+exports['@implements'] = 'http://i.bixbyjs.org/redis';
+//exports['@name'] = 'redis';
+//exports['@port'] = 6379;
+//exports['@protocol'] = 'tcp';
 exports['@require'] = [
   'http://i.bixbyjs.org/security/Keyring'
 ];

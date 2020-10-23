@@ -13,10 +13,7 @@ describe('service', function() {
   
   it('should be annotated', function() {
     expect(factory['@singleton']).to.equal(true);
-    expect(factory['@implements']).to.deep.equal([ 'http://i.bixbyjs.org/redis', 'http://i.bixbyjs.org/IService' ]);
-    expect(factory['@name']).to.equal('redis');
-    expect(factory['@port']).to.equal(6379);
-    expect(factory['@protocol']).to.equal('tcp');
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/redis');
   });
   
   describe('API', function() {

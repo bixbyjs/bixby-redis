@@ -18,8 +18,8 @@ exports = module.exports = function(redis) {
 
 exports['@singleton'] = true;
 exports['@implements'] = [
-  'http://i.bixbyjs.org/IService',
-  'http://i.bixbyjs.org/http/ISessionStore'
+  'http://i.bixbyjs.org/Service',
+  'http://i.bixbyjs.org/http/SessionStore'
 ];
 exports['@name'] = 'sess-redis';
 exports['@port'] = 6379;
