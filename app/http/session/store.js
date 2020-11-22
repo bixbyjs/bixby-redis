@@ -1,29 +1,18 @@
-exports = module.exports = function(redis) {
+exports = module.exports = function(redis, location) {
   var session = require('express-session');
   var RedisStore = require('connect-redis')(session);
   
   
-  var api = {};
-  
-  api.createConnection = function(options, connectListener) {
-    var client = redis.createConnection(options);
-    
-    var store = new RedisStore({ client: client });
-    if (connectListener) { store.once('connect', connectListener); }
-    return store;
-  };
-  
-  return api;
+  var client = redis.createConnection(location);
+  var store = new RedisStore({ client: client });
+  return store;
 };
 
 exports['@singleton'] = true;
-exports['@implements'] = [
-  'http://i.bixbyjs.org/Service',
-  'http://i.bixbyjs.org/http/SessionStore'
-];
-exports['@name'] = 'sess-redis';
+exports['@implements'] = 'http://i.bixbyjs.org/http/SessionStore';
+exports['@service'] = 'sess-redis';
 exports['@port'] = 6379;
-exports['@protocol'] = 'tcp';
 exports['@require'] = [
-  'http://i.bixbyjs.org/redis'
+  'http://i.bixbyjs.org/redis',
+  '$location'
 ];
