@@ -33,9 +33,9 @@
     ]
   },
   "dependencies": {
-    "connect-redis": "^3.4.1",
-    "express-session": "^1.16.1",
-    "redis": "^2.8.0"
+    "connect-redis": "^5.0.0",
+    "express-session": "^1.17.1",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "make-node": "^0.3.0",

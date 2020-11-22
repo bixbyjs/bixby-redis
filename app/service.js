@@ -10,10 +10,13 @@ exports = module.exports = function(keyring) {
     
     // TODO: Handle initial errors somehow...
     
+    // FIXME: put this back
+    /*
     keyring.get(options.name, function(err, cred) {
       // TODO: Error handling
       client.auth(cred.password);
     });
+    */
     
     return client;
   };
@@ -23,9 +26,6 @@ exports = module.exports = function(keyring) {
 
 exports['@singleton'] = true;
 exports['@implements'] = 'http://i.bixbyjs.org/redis';
-//exports['@name'] = 'redis';
-//exports['@port'] = 6379;
-//exports['@protocol'] = 'tcp';
 exports['@require'] = [
   'http://i.bixbyjs.org/security/Keyring'
 ];
