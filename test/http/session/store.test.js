@@ -14,13 +14,12 @@ describe('http/session/store', function() {
   
   it('should be annotated', function() {
     expect(factory['@singleton']).to.equal(true);
-    expect(factory['@implements']).to.deep.equal([ 'http://i.bixbyjs.org/Service', 'http://i.bixbyjs.org/http/SessionStore' ]);
-    expect(factory['@name']).to.equal('sess-redis');
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/http/SessionStore');
+    expect(factory['@service']).to.equal('sess-redis');
     expect(factory['@port']).to.equal(6379);
-    expect(factory['@protocol']).to.equal('tcp');
   });
   
-  describe('API', function() {
+  describe.skip('API', function() {
     var _redis = { createConnection: function(){} };
     var _store = new RedisStore({ client: sinon.createStubInstance(redis.RedisClient) });
     var ReidsStoreStub = sinon.stub().returns(_store);
