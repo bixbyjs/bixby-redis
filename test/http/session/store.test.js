@@ -19,52 +19,30 @@ describe('http/session/store', function() {
     expect(factory['@port']).to.equal(6379);
   });
   
-  describe.skip('API', function() {
-    var _redis = { createConnection: function(){} };
-    var _store = new RedisStore({ client: sinon.createStubInstance(redis.RedisClient) });
-    var ReidsStoreStub = sinon.stub().returns(_store);
-    var api = $require('../../../app/http/session/store',
-      { 'connect-redis': function() { return ReidsStoreStub; } }
-    )(_redis);
+  describe('creating with defaults', function() {
+    var RedisStoreSpy = sinon.spy(RedisStore);
+    var factory = $require('../../../app/http/session/store',
+      { 'connect-redis': function() { return RedisStoreSpy; } });
     
+    var client = sinon.createStubInstance(redis.RedisClient);
+    var _redis = new Object();
+    _redis.createConnection = sinon.stub().returns(client);
     
-    describe('.createConnection', function() {
-      beforeEach(function() {
-        sinon.stub(_redis, 'createConnection').returns(sinon.createStubInstance(redis.RedisClient));
-      });
-      
-      afterEach(function() {
-        ReidsStoreStub.resetHistory();
-      });
-      
-      
-      it('should construct store', function() {
-        var store = api.createConnection({ name: 'redis.example.com', port: 6379 });
-        
-        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ name: 'redis.example.com', port: 6379 });
-        expect(ReidsStoreStub).to.have.been.calledOnce.and.calledWithNew;
-        expect(ReidsStoreStub.getCall(0).args[0].client).to.be.an.instanceof(redis.RedisClient);
-        expect(store).to.be.an.instanceof(RedisStore);
-      }); // should construct store
-      
-      it('should construct store and add listener', function(done) {
-        var store = api.createConnection({ name: 'redis.example.com', port: 6379 }, function() {
-          expect(this).to.be.an.instanceof(RedisStore);
-          done();
-        });
-        
-        expect(_redis.createConnection).to.have.been.calledOnceWithExactly({ name: 'redis.example.com', port: 6379 });
-        expect(ReidsStoreStub).to.have.been.calledOnce.and.calledWithNew;
-        expect(ReidsStoreStub.getCall(0).args[0].client).to.be.an.instanceof(redis.RedisClient);
-        expect(store).to.be.an.instanceof(RedisStore);
-        
-        process.nextTick(function() {
-          store.emit('connect');
-        });
-      }); // should construct store and add listener
-      
-    }); // .createConnection
-    
-  }); // API
+    var store = factory(_redis, { host: 'redis.example.com', port: 6379 });
+  
+    it('should create connection', function() {
+      expect(_redis.createConnection).to.have.been.calledOnce;
+      expect(_redis.createConnection).to.have.been.calledWith({ host: 'redis.example.com', port: 6379 });
+    });
+  
+    it('should construct store', function() {
+      expect(RedisStoreSpy).to.have.been.calledOnce;
+      expect(RedisStoreSpy).to.have.been.calledWith({ client: client });
+    });
+  
+    it('should return store', function() {
+      expect(store).to.be.an.instanceOf(RedisStore);
+    });
+  }); // creating with defaults
   
 }); // http/session/store
