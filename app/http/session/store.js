@@ -8,6 +8,16 @@
  * used by [`connect-redis`][2] suffixed by `-resp`, the application layer
  * [protocol][3] implemented by Redis, and thus used by this session store.
  *
+ * Operationally, the list of sessions stored by Redis can be queried using
+ * `redis-cli`:
+ *
+ *     $ redis-cli
+ *     > KEYS sess:*
+ *
+ * Session data can be read by querying a session ID:
+ *
+ *     > GET sess:b_atMd5ftfIJ7YeBNeBUoH1pgl4KcErs
+ *
  * [1]: https://redis.io/
  * [2]: https://github.com/tj/connect-redis
  * [3]: https://redis.io/topics/protocol
