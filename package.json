@@ -32,6 +32,9 @@
       "http/session/store"
     ]
   },
+  "directories": {
+    "com": "com"
+  },
   "dependencies": {
     "connect-redis": "^5.0.0",
     "express-session": "^1.17.1",

@@ -1,7 +1,7 @@
 var $require = require('proxyquire');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var factory = require('../../../app/http/session/store');
+var factory = require('../../../com/http/session/store');
 var redis = require('redis');
 var RedisStore = require('connect-redis')(require('express-session'));
 
@@ -21,7 +21,7 @@ describe('http/session/store', function() {
   
   describe('creating with defaults', function() {
     var RedisStoreSpy = sinon.spy(RedisStore);
-    var factory = $require('../../../app/http/session/store',
+    var factory = $require('../../../com/http/session/store',
       { 'connect-redis': function() { return RedisStoreSpy; } });
     
     var client = sinon.createStubInstance(redis.RedisClient);

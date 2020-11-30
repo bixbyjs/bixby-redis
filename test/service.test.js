@@ -1,7 +1,7 @@
 var $require = require('proxyquire');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var factory = require('../app/service');
+var factory = require('../com/service');
 var redis = require('redis');
 
 
@@ -23,7 +23,7 @@ describe('service', function() {
     _client.on.callThrough();
     _client.once.callThrough();
     var createClientStub = sinon.stub().returns(_client);
-    var api = $require('../app/service',
+    var api = $require('../com/service',
       { 'redis': { createClient: createClientStub } }
     )(_keyring);
     
