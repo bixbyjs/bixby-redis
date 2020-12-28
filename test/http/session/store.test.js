@@ -37,6 +37,7 @@ describe('http/session/store', function() {
   
     it('should construct store', function() {
       expect(RedisStoreSpy).to.have.been.calledOnce;
+      expect(RedisStoreSpy).to.have.been.calledWithNew;
       expect(RedisStoreSpy).to.have.been.calledWith({ client: client });
     });
   
