@@ -26,15 +26,12 @@
   ],
   "namespace": "opt/redis",
   "components": [
-    "service",
-    "http/session/store"
+    "service"
   ],
   "directories": {
     "com": "com"
   },
   "dependencies": {
-    "connect-redis": "^5.0.0",
-    "express-session": "^1.17.1",
     "redis": "^3.0.2"
   },
   "devDependencies": {
